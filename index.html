@@ -571,6 +571,15 @@
   </style>
 </head>
 <body>
+  <div id="lockScreen" style="position:fixed;inset:0;background:linear-gradient(180deg,#07111f,#160f2f);display:flex;align-items:center;justify-content:center;z-index:9999;">
+    <div style="text-align:center;background:rgba(15,20,40,0.6);padding:40px;border-radius:24px;border:1px solid rgba(255,255,255,0.1);backdrop-filter:blur(10px);">
+      <h2 style="margin-bottom:16px;">✨ enter password ✨</h2>
+      <input id="passwordInput" type="password" placeholder="password" style="padding:10px 14px;border-radius:999px;border:none;outline:none;margin-bottom:14px;" />
+      <br/>
+      <button onclick="checkPassword()" style="padding:10px 18px;border-radius:999px;border:none;background:#bca7ff;cursor:pointer;">enter</button>
+      <p id="error" style="margin-top:10px;color:#ff9aa2;display:none;">wrong password</p>
+    </div>
+  </div>
   <div class="sky-glow"></div>
   <div class="mist"></div>
   <div class="stars" id="stars"></div>
@@ -581,7 +590,7 @@
   <main class="container">
     <section class="hero">
       <div class="hero-inner">
-        <div class="eyebrow">for my bestieeeeee ✨</div>
+        <div class="eyebrow">for one of my favorite people ✨</div>
         <h1>Happy Birthday,<br>Andrea</h1>
         <p>
           This little night garden is for you — soft starlight, dreamy flowers, moon glow,
@@ -622,7 +631,7 @@
         <h2>A Note Hidden in the Starlight</h2>
         <div class="sparkle-line"></div>
         <p>
-          I made this little site for you because why not — you deserve something fun on your birthday. I’ve really enjoyed getting to know you, and every time we hang out it’s always memorable and a good time. Glad we crossed paths 😊
+          I made this little site for you because why not — you deserve something fun on your birthday. I’ve really enjoyed getting to know you, and every time we hang out it’s always easy and a good time. Glad we crossed paths 😊
         </p>
         <button class="wish-button" onclick="toggleSecret()">open the secret birthday wish ✨</button>
         <div class="secret" id="secretBox">
@@ -665,6 +674,15 @@
   </main>
 
   <script>
+    function checkPassword() {
+      const input = document.getElementById('passwordInput').value;
+      const correct = 'andrea'; // change this password
+      if (input.toLowerCase() === correct) {
+        document.getElementById('lockScreen').style.display = 'none';
+      } else {
+        document.getElementById('error').style.display = 'block';
+      }
+    }
     let parallaxTicking = false;
     const stars = document.getElementById('stars');
     const garden = document.getElementById('garden');
